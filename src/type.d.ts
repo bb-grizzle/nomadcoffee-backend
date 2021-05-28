@@ -1,7 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, User } from "@prisma/client";
 
-type CtxType = {
+export type CtxType = {
 	client: PrismaClient;
+	loggedInUser: User;
 };
 
 export type Resolver = (root: any, args: any, ctx: CtxType, info: any) => any;

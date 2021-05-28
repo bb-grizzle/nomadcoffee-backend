@@ -1,6 +1,9 @@
-import { ApolloServer } from "apollo-server";
+import { ApolloServer } from "apollo-server-express";
+import * as express from "express";
 import client from "./client";
 import { typeDefs, resolvers } from "./schema";
+import { getUserByToken } from "./schema/user/user.util";
+import * as logger from "morgan";
 require("dotenv").config();
 
 const port = process.env.PORT || 4000;
@@ -8,13 +11,20 @@ const port = process.env.PORT || 4000;
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	context: () => {
+	context: async ({ req }) => {
 		return {
 			client,
+			loggedInUser: await getUserByToken(req.headers.token),
 		};
 	},
 });
 
-server.listen(port).then(({ url }) => {
-	console.log(`🚀  Server ready at ${url}`);
+const app = express();
+app.use(logger("tiny"));
+app.use("/static", express.static("uploads"));
+
+server.applyMiddleware({ app });
+
+app.listen(port, () => {
+	console.log(`🚀  Server ready at http://localhost:${port}`);
 });

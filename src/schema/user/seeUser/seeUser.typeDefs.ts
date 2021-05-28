@@ -1,6 +1,7 @@
 import { gql } from "apollo-server-core";
+
 export default gql`
 	type Query {
-		seeMovie(id: Int!): Movie
+		seeUser(username: String!): User
 	}
 `;
