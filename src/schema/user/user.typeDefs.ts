@@ -15,5 +15,10 @@ export default gql`
 		# computed fiedls
 		followers(lastUserId: Int): [User]!
 		following(lastUserId: Int): [User]!
+		totalFollowing: Int!
+		totalFollowers: Int!
+		isMe: Boolean!
+		isFollowing: Boolean!
+		coffeeShops(lastId: Int): [CoffeeShop]!
 	}
 `;

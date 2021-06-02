@@ -1,3 +1,4 @@
+import { uploadLocal } from "./../../shared/shared.utils";
 import { protectResolver } from "./../user.util";
 import { Resolvers } from "../../../type";
 import { hashPassword } from "../user.util";
@@ -26,13 +27,7 @@ const resolver: Resolvers = {
 			// 04. avatar
 			let avatarURL = undefined;
 			if (avatar) {
-				const { filename, createReadStream } = await avatar;
-				const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
-				const path = `${process.cwd()}/uploads/${newFilename}`;
-				const readStream = createReadStream();
-				const writedStream = fs.createWriteStream(path);
-				await readStream.pipe(writedStream);
-				avatarURL = `http://localhost:4000/static/${newFilename}`;
+				avatarURL = await uploadLocal(avatar, loggedInUser.id);
 			}
 
 			// 04. update
