@@ -40,3 +40,9 @@
 - [x] seeCategory
 - [x] seeCategories
 - [x] editCoffeeShop
+
+### Assignment 06
+
+- [x] build src
+- [ ] start with node
+- [ ] create heroku app & link

@@ -1,5 +1,5 @@
 import { ApolloServer } from "apollo-server-express";
-import * as express from "express";
+import express from "express";
 import client from "./client";
 import { typeDefs, resolvers } from "./schema";
 import { getUserByToken } from "./schema/user/user.util";
@@ -14,7 +14,7 @@ const server = new ApolloServer({
 	context: async ({ req }) => {
 		return {
 			client,
-			loggedInUser: await getUserByToken(req.headers.token),
+			loggedInUser: await getUserByToken(req.headers.token as string),
 		};
 	},
 });

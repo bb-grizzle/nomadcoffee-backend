@@ -9,19 +9,25 @@ export default gql`
 		user: User!
 		photos: [CoffeeShopPhoto]!
 		categories: [Category]
+		createdAt: String!
+		updatedAt: String!
 	}
 
 	type CoffeeShopPhoto {
 		id: Int!
 		url: String!
 		shop: CoffeeShop
+		createdAt: String!
+		updatedAt: String!
 	}
 
 	type Category {
 		id: Int!
 		name: String!
-		slug: String
+		slug: String!
 		shops: [CoffeeShop]
+		createdAt: String!
+		updatedAt: String!
 		# computed fields
 		totalShops: Int!
 	}

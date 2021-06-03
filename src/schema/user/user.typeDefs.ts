@@ -19,6 +19,6 @@ export default gql`
 		totalFollowers: Int!
 		isMe: Boolean!
 		isFollowing: Boolean!
-		coffeeShops(lastId: Int): [CoffeeShop]!
+		coffeeShops(lastId: Int): [CoffeeShop]
 	}
 `;
