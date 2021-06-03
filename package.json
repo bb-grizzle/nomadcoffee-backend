@@ -7,6 +7,7 @@
 		"migrate": "npx prisma migrate dev",
 		"studio": "npx prisma studio",
 		"build": "npx tsc",
+		"start": "node build/server",
 		"deploy": "git push heroku master"
 	},
 	"repository": {

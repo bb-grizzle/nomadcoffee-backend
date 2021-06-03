@@ -3,12 +3,15 @@ import express from "express";
 import client from "./client";
 import { typeDefs, resolvers } from "./schema";
 import { getUserByToken } from "./schema/user/user.util";
-import * as logger from "morgan";
+import logger from "morgan";
 require("dotenv").config();
 
 const port = process.env.PORT || 4000;
 
 const server = new ApolloServer({
+	playground: true,
+	introspection: true,
+
 	typeDefs,
 	resolvers,
 	context: async ({ req }) => {
