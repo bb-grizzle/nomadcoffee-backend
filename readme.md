@@ -44,5 +44,7 @@
 ### Assignment 06
 
 - [x] build src
-- [ ] start with node
-- [ ] create heroku app & link
+- [x] start with node
+- [x] create heroku app & link
+- [x] create db
+- [ ] prisma migrate
